@@ -1,0 +1,67 @@
+=====================================================================
+                        Données slitless CTIO
+=====================================================================
+
+:Time-stamp: <2018-11-08 17:17 ycopin@lyonovae03.in2p3.fr>
+:Authors:
+   Y. Copin, J. Neveu
+
+Generic information
+===================
+
+Introduction
+------------
+
+* Telescope: CTIO 0.9m
+* Detector: Tek2K_3, pixsize=0.401 arcsec/pix
+* Distance CCD-disperseur: environ 56 ± 5 mm
+
+Preprocessed exposures:
+
+* `reduc_20170530_130.fits`: CALSPEC HD111980 (x0, y0 = 791, 703 px)
+  avec Ronchi 400 traits/mm (seeing 0''593, airmass X=1.114)
+
+  .. image:: reduc_20170530_130.png
+     :width: 50%
+
+* `reduc_20170605_005.fits`: nébuleuse planétaire (x0, y0 = 745, 653 px)
+  avec fond bizarre, hologramme ~360 traits/mm (seeing 0''699, airmass
+  X=1.193)
+
+  .. image:: reduc_20170605_005.png
+     :width: 50%
+
+reduc_20170530_130
+------------------
+
+**Ref.:** J. Neveu (08-11-18)
+
+Voici en pièce jointe (`dispersion_relation.txt`) le fichier de
+sortie, une image du spectre et un tableau donnant la conversion
+pixels<->lambdas (nm), les pixels étant comptés à partir du centroid
+de l'ordre zéro estimé à::
+
+  2018-11-08 15:03:24  Image      find_target          INFO
+      X,Y target position in pixels: 748.005,684.256
+  2018-11-08 15:03:24  Image      turn_image           INFO
+      Rotate the image with angle theta=-0.63 degree
+
+je te donne l'angle de rotation au cas où aussi. Pour charger la
+relation de dispersion::
+
+  deltapix, lambdas = np.loadtxt('dispersion_relation.txt').T
+
+Couverture spectrale (`reduc_20170530_130_spectrum.fits`): 352.0 -- 1027.5 nm
+
+.. image:: reduc_20170530_130_spectrum.png
+   :width: 50%
+
+Generic model
+=============
+
+Dispersion law: y [m] = order * rho [lines/m] * wavelength [m] * f [m]
+with:
+* order = +1
+* rho = 400 lines/mm
+* f = 56 mm
+so y [µm] = 1 * 400e3 * 56e-3 * l[µm] = 22.4e3 * l[µm]
