@@ -12,4 +12,4 @@ In 1_Simulations is shown the heart of the work I did.
 In 2_docs are shown useful docs I used and the other docs are the slides used for the presentation and the internship report. 
 
 
-All the steps of the work done here are not shown as it was done on gitlab and not on github.
+The github history of the work done here is not shown as it was done on gitlab and just imported on github.
